@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tooltip dan PopUp</title>
+    <link rel="stylesheet" type="text/css"" href="leaflet.css"/>
+    <script type="text/javascript" src="leaflet.js"></script>
+</head>
+<body>
+    <div id="mapku" style="width: 100%; height: 600px;"></div>
+</body>
+<script type="text/javascript">
+     var mymap = L.map('mapku').setView([-0.9137562664733327, 100.46738292876353],17);
+    
+     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom:18,
+        id:'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(mymap);
+
+    L.marker([-0.9241358328363046, 100.36245736766848],17).bindTooltip("Masjid raya Sumater Barat").addTo(mymap); //Masjid Raya Sumbar
+    L.marker([-0.9482439793460835, 100.35192438283983],17).bindTooltip("Taplau").addTo(mymap); // Taplau
+
+    L.marker([-0.9241358328363046, 100.36245736766848],17).bindPopup("<b> Info Masjid raya Sumater Barat</b> <br> Waktu Zuhur : 12:15 WIB").addTo(mymap); //Masjid Raya Sumbar
+    L.marker([-0.9482439793460835, 100.35192438283983],17).bindPopup("<b> Taplau</b> <br> Taplau adalah Pantai yang berada di Sumatera Barat, Padang").addTo(mymap); //Kantor Gubernur
+
+    L.marker([-0.9144177147594804, 100.46616172587504],17).bindTooltip("Politeknik Negeri Padang").addTo(mymap);
+
+    var info_pnp = '<p style="text-align: center;"> <img src="http://p3m.pnp.ac.id/wp-content/uploads/2020/04/pnp.jpg" width="250px" height="100px"></p><p>Politeknik Negeri Padang didirikan pada tahun 1987, di mana keberadaan politeknik merupakan salah satu dari 17 (tujuh belas) politeknik pertama di Indonesia, yang bertujuan menjawab tantangan perkembangan dunia industri dan dunia usaha yang menuntut kompetensi dari tenaga-tenaga kerja terampil, professional dan mandiri yang lebih mengutamakan attitude, knowledge dan skill serta kompeten di bidangnya.</p>';
+    L.marker([-0.9144177147594804, 100.46616172587504],17).bindTooltip("Politeknik Negeri Padang").bindPopup(info_pnp).addTo(mymap); //masjid Raya
+
+    var info_taplau = '<p style="text-align: center;"> <img src="data:image/jpeg;base64,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" width="250px" height="100px"></p><p>Taplau merupakan salah satu objek wisata yang dimiliki Kota Padang. Taplau merupakan kepanjangan dari tapi lauik yang dalam bahasa Indonesia berarti tepi laut. Kawasan ini sangat strategis.</p>';
+    L.marker([-0.9482439793460835, 100.35192438283983],17).bindTooltip("Taplau").bindPopup(info_taplau).addTo(mymap); //Taplau
+
+
+    var info_masjid_raya = '<p style="text-align: center;"> <iframe width="250px" height="100px"src="https://www.youtube.com/embed/aqW5KASLztQ" frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;picture-in-picture" allowfullscreen></iframe></p><p style="text-align: justify;">Masjid ini berada di Jalan Khatib Sulaiman, Alai Parak Kopi, Padang Utara dan dibangun di atas lahan seluas 0 ribu meter persegi, dengan luas bangunan mencapai 18 ribu meter persegi. Tak serupa masjid pada umumnya, masjid ini justru tak memiliki kubah, melainkan hanya memiliki atap khas budaya Minangkabau. Bagian atapnya memiliki desain Rumah Gadang dengan empat sudut lancip, sedangkan bangunannya berbentuk gonjong.</p>';
+    L.marker([-0.9241358328363046, 100.36245736766848],17).bindTooltip("Masjid Raya Sumatera Barat").bindPopup(info_masjid_raya).addTo(mymap);
+
+
+    var circle = L.circle([-0.9374867431110305, 100.36039978464098],{
+        color:'red',
+        fillColor:'#f03',
+        fillOpacity:0.5,
+        radius: 500
+    }).addTo(mymap).bindPopup('Kintan')
+
+    var polygon = L.polygon([
+        [-0.9144177147594804, 100.46616172587504],
+        [-0.9241358328363046, 100.36245736766848],
+        [-0.9482439793460835, 100.35192438283983],
+    ]).addTo(mymap).bindPopup('I am a polygon')
+
+    var popup = L.popup()
+        .setLatLng(e.latlng)
+        .setContent('you clicked the map at'+ e.latlng.toString())
+        .openOn(mymap);
+
+    var LeafIcon = L.Icon.extend({
+        options: {
+            iconSize: [36,36]
+        }
+    });
+
+    var masjidicon = new LeafIcon({iconUrl: 'images/masjid_icon.png'});
+
+    L.marker([-0.9241358328363046, 100.36245736766848],{icon: masjidicon}).addTo(mymap);
+
+</script>
+</html>
